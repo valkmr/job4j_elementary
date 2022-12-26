@@ -29,4 +29,11 @@ public class SortSelectedTest {
         assertThat(result).containsExactly(expected);
     }
 
+    @Test
+    public void whenSort2() {
+        int[] data = new int[] {109, -1, -2, 109};
+        int[] result = SortSelected.sort(data);
+        int[] expected = new int[] {-2, -1, 109, 109};
+        assertThat(result).containsExactly(expected);
+    }
 }
