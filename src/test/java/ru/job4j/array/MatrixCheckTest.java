@@ -1,5 +1,6 @@
 package ru.job4j.array;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -86,5 +87,57 @@ public class MatrixCheckTest {
         char[] result = MatrixCheck.extractDiagonal(input);
         char[] expected = {'X', 'Y', 'Z'};
         assertThat(result).containsExactly(expected);
+    }
+
+    @Test
+    public void whenDataMonoByTrueThenTrue() {
+        char[][] input = {
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+        };
+        boolean result = MatrixCheck.isWin(input);
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void whenDataNotMonoByTrueThenFalse() {
+        char[][] input = {
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', 'X', ' ', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+        };
+        boolean result = MatrixCheck.isWin(input);
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    public void whenDataHMonoByTrueThenTrue() {
+        char[][] input = {
+                {' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' '},
+                {'X', 'X', 'X', 'X', 'X'},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+        };
+        boolean result = MatrixCheck.isWin(input);
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void whenDataDiagMonoIsTrueThenFalse() {
+        char[][] input = {
+                {'X', ' ', ' ', ' ', ' '},
+                {' ', 'X', ' ', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', ' ', 'X', ' '},
+                {' ', ' ', ' ', ' ', 'X'},
+        };
+        boolean result = MatrixCheck.isWin(input);
+        Assertions.assertFalse(result);
     }
 }
