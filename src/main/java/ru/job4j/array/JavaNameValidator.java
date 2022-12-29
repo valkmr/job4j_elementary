@@ -4,19 +4,19 @@ import static java.lang.Character.*;
 
 public class JavaNameValidator {
     public static boolean isNameValid(String name) {
-        boolean value = name.length() > 0;
-        for (int i = 0; i < name.length(); i++) {
-            if (value != switch (i) {
-                case 0 -> isLowerLatinLetter(name.codePointAt(i));
-                default -> isSpecialSymbol(name.codePointAt(i)) || isUpperLatinLetter(name.codePointAt(i))
-                        || isLowerLatinLetter(name.codePointAt(i)) || isDigit(name.codePointAt(i));
-            }) {
-                value = false;
-                break;
+        boolean value = !name.isEmpty();
+        if (value && isLowerLatinLetter(name.codePointAt(0))) {
+            for (int i = 1; i < name.length(); i++) {
+                if (!isSpecialSymbol(name.codePointAt(i)) && !isUpperLatinLetter(name.codePointAt(i))
+                            && !isLowerLatinLetter(name.codePointAt(i)) && !isDigit(name.codePointAt(i)))  {
+                    value = false;
+                    break;
+                }
             }
-
+        } else {
+            value = false;
         }
-        return value;
+            return value;
     }
 
     public static boolean isBetween(int x, int lower, int upper) {

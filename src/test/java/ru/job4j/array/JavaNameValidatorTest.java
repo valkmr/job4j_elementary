@@ -12,6 +12,16 @@ public class JavaNameValidatorTest {
     }
 
     @Test
+    void whenOneSymbolNameValid() {
+    assertThat(isNameValid("a")).isTrue();
+    }
+
+    @Test
+    void whenOneSymbolNameInalid() {
+        assertThat(isNameValid("A")).isFalse();
+    }
+
+    @Test
     void whenFullLatValid() {
         assertThat(isNameValid("first")).isTrue();
     }
