@@ -17,10 +17,6 @@ public class JavaNameValidator {
             return value;
     }
 
-    public static boolean isSpecialSymbol(int code) {
-        return code == 36 || code == 95;
-    }
-
     public static boolean isUpperLatinLetter(int code) {
         return code >= 65 && code <= 90;
     }
@@ -29,4 +25,7 @@ public class JavaNameValidator {
         return code >= 97 && code <= 122;
     }
 
+    public static boolean isSpecialSymbol(int code) {
+        return code == 36 || code == 95;
+    }
 }
