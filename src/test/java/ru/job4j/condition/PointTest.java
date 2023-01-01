@@ -31,4 +31,13 @@ public class PointTest {
         double expected = 4;
         assertThat(rsl).isEqualTo(expected);
     }
+
+    @Test
+    public void whenM000To002Then4() {
+        Point a = new Point(0, 0, -2);
+        Point b = new Point(0, 0, 2);
+        double rsl = a.distance3d(b);
+        double expected = 4;
+        assertThat(rsl).isEqualTo(expected);
+    }
 }
